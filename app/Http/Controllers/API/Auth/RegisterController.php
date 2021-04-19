@@ -6,6 +6,7 @@ use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -30,7 +31,7 @@ class RegisterController extends Controller
                 'phone' => $request->input('phone'),
                 'role' => $request->input('role'),
                 'email' => $request->input('email'),
-                'password' => $request->input('password')
+                'password' => Hash::make($request->input('password'))
             ]);
             DB::commit();
             return response()->json($user, 201);

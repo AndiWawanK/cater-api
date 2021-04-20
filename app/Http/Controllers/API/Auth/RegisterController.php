@@ -19,9 +19,7 @@ class RegisterController extends Controller
         ]);
 
         if($userValidator->fails()){
-            return response()->json([
-                'message' => $userValidator
-            ],400);
+            return response()->json($userValidator->errors(),400);
         }
 
         DB::beginTransaction();

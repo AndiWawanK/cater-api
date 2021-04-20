@@ -2,8 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\Auth\RegisterController;
-use App\Http\Controllers\API\Auth\LoginController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,11 +13,21 @@ use App\Http\Controllers\API\Auth\LoginController;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+// auth
+Route::group([
+    'namespace' => 'App\Http\Controllers\API\Auth'
+], function(){
+    Route::post('/register', 'RegisterController@create');
+    Route::post('/login', 'LoginController@entry');
+    Route::post('/forgot-password', 'LoginController@forgotPassword');
+    Route::post('/new-password', 'LoginController@newPassword');
+});
 
-Route::group(['middleware => auth:sanctum'], function(){
-    Route::post('/register', [RegisterController::class, 'create']);
-    Route::post('/login', [LoginController::class, 'entry']);
+// customer
+Route::group([
+    'middleware' => 'auth:sanctum',
+    'namespace' => 'App\Http\Controllers\API\Customer',
+    'prefix' => 'customer'
+], function(){
+    Route::get('/profile', 'ProfileController@show');
 });

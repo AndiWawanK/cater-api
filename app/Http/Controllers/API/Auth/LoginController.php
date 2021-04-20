@@ -18,7 +18,7 @@ class LoginController extends Controller
         ]);
 
         if($userValidator->fails()){
-            return response()->json(['message' => $userValidator], 400);
+            return response()->json($userValidator->errors(), 400);
         }
 
         $user = User::where(['email' => $request->input('email')])->first();
@@ -28,13 +28,60 @@ class LoginController extends Controller
             return response()->json(['message' => 'Wrong password!'], 401);
         }
 
-        $token = $user->createToken('user-token')->plainTextToken;
+        if($user->tokens()->where('name', $request->input('email'))->first()) {
+            $user->tokens()->where('tokenable_id', $user->id)->delete();
+        }
+
+        $token = $user->createToken($request->input('email'))->plainTextToken;
 
         return response()->json([
-            'id' => $user->id,
-            'full_name' => $user->full_name,
-            'email' => $user->email,
-            'token' => $token
+            'status_code' => 200,
+            'access_token' => $token,
+            'token_type' => 'Bearer',
         ], 200);
     }
+
+    public function forgotPassword(Request $request){
+        $emailValidator = Validator::make($request->all(), [
+            'email' => 'required'
+        ]);
+
+        if($emailValidator->fails()){
+            return response()->json($emailValidator->errors(), 400);
+        }
+
+        $email = User::where(['email' => $request->input('email')])->exists();
+
+        if(!$email){
+            return response()->json([
+                'email' => $email,
+                'message' => 'Your email is not registered.'
+            ], 400);
+        }
+
+        return response()->json(['email' => $email], 200);
+    }
+
+    public function newPassword(Request $request){
+        $dataValidator = Validator::make($request->all(), [
+            'email' => 'required',
+            'password' => 'required'
+        ]);
+        if($dataValidator->fails()){
+            return response()->json($dataValidator->errors(), 400);
+        }
+
+        DB::BeginTransaction();
+        try{
+            $update = User::where(['email' => $request->input('email')])
+                        ->update(['password' => Hash::make($request->input('password'))]);
+
+            return response()->json(['message' => true], 200);
+        }catch(Exception $e){
+            DB::rollback();
+            return response()->json(['error' => $e], 400);
+        }
+    }
 }
+
+

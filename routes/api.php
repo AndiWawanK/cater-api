@@ -30,4 +30,7 @@ Route::group([
     'prefix' => 'customer'
 ], function(){
     Route::get('/profile', 'ProfileController@show');
+    Route::get('/banner', 'ProductController@banner');
+    Route::get('/categories', 'CategoryController@show');
+    Route::get('/products', 'ProductController@show');
 });

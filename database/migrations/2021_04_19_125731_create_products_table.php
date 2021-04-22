@@ -20,7 +20,7 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->string('subscription');
             $table->string('price');
-            $table->string('discount');
+            $table->integer('discount');
             $table->string('description');
             $table->string('status');
             $table->timestamps();

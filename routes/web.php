@@ -13,6 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// dashboard
+
+Route::group(['prefix' => 'dashboard'], function(){
+    Route::get('/home', function(){
+        return view('admin.pages.home');
+    });
+
+});
+
+
+// landing page
+Route::get('/', function(){
+    return view('frontend.pages.home');
+});
+Route::get('/contact', function(){
+    return view('frontend.pages.contact');
+});
+Route::get('/registration-merchant', function(){
+    return view('frontend.pages.registration');
 });

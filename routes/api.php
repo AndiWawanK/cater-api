@@ -30,7 +30,13 @@ Route::group([
     'prefix' => 'customer'
 ], function(){
     Route::get('/profile', 'ProfileController@show');
-    Route::get('/banner', 'ProductController@banner');
+    Route::get('/banner', 'PacketController@banner');
     Route::get('/categories', 'CategoryController@show');
-    Route::get('/products', 'ProductController@show');
+    Route::get('/recomendation', 'RestaurantController@showRecomendation');
+    Route::get('/recomendation/{packetId}', 'RestaurantController@showPacketMenu');
+    
+    // order
+    Route::post('/order/{customerId}', 'OrderController@createOrder');
+    Route::get('/order/progress/{customerId}', 'OrderController@orderProgress');
+    Route::get('/order/history/{customerId}', 'OrderController@orderHistory');
 });

@@ -21,6 +21,7 @@ class CreateMerchantsTable extends Migration
             $table->string('merchant_level');
             $table->string('banner');
             $table->unsignedBigInteger('province_code');
+            $table->enum('status', ['1', '0'])->default('0');
             $table->foreign('province_code')->references('id')->on('provinces');
             $table->timestamps();
         });

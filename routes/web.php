@@ -18,11 +18,15 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // dashboard
-
-Route::group(['prefix' => 'dashboard'], function(){
-    Route::get('/home', function(){
+Route::group([
+    'prefix' => 'dashboard',
+    'namespace' => 'App\Http\Controllers\admin'
+], function(){
+    Route::get('/', function(){
         return view('admin.pages.home');
     });
+
+    Route::get('/registrant', 'RegistrantController@show');
 
 });
 

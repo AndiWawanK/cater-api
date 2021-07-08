@@ -18,11 +18,14 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('merchant_id');
             $table->foreign('merchant_id')->references('id')->on('merchants');
             $table->string('name');
-            $table->string('subscription');
+            $table->string('subscription')->nullable();
             $table->string('price');
-            $table->integer('discount');
-            $table->string('description');
+            $table->integer('discount')->nullable();
+            $table->string('description')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->string('status');
+            $table->integer('rating');
+            $table->enum('package_type', ['weekly', 'monthly']);
             $table->timestamps();
         });
     }

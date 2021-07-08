@@ -1797,6 +1797,53 @@ p {
   margin-top: 5px;
   color: #8e8e8e;
 }
+.registration-form select {
+  width: 100%;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 0 15px;
+  height: 43px;
+  border: 1px solid #dedede4f;
+  color: #222;
+  font-size: 16px;
+}
+.registration-form textarea {
+  width: 100%;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 0 15px;
+  /* height: 43px; */
+  border: 1px solid #dedede4f;
+  color: #222;
+  font-size: 16px;
+}
+.second-btn {
+  display: inline-block;
+  font-weight: 700;
+  font-family: "Nunito", sans-serif;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 2px solid #FFD422;
+  padding: 0 30px;
+  font-size: 16px;
+  height: 45px;
+  line-height: 45px;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 5;
+  -webkit-transition: all 0.4s ease-out 0s;
+  -moz-transition: all 0.4s ease-out 0s;
+  -ms-transition: all 0.4s ease-out 0s;
+  -o-transition: all 0.4s ease-out 0s;
+  transition: all 0.4s ease-out 0s;
+  background-color: #FFD422;
+}
 /*===========================
        11.FOOTER css 
 ===========================*/

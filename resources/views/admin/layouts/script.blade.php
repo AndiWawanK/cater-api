@@ -17,3 +17,6 @@
 <script src="{{ asset('assets/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js') }}"></script>
 <script src="{{ asset('assets/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js') }}"></script>
 <script src="{{ asset('assets/dist/js/pages/dashboards/dashboard1.min.js') }}"></script>
+
+<script src="{{ asset('assets/assets/extra-libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/dist/js/pages/datatable/datatable-basic.init.js') }}"></script> --}}

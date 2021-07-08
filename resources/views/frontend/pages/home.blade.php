@@ -67,10 +67,10 @@
                     </div>
                 </div>
             </div> <!-- row -->
-            <div class="row">
-                <div class="col-lg-12">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-6">
                     <div class="about-image d-flex justify-content-center mt-60 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-                        <img src="{{ asset('frontend/assets/images/about.png') }}" alt="about" style="width: 40%">
+                        <img src="{{ asset('frontend/assets/images/about.png') }}" alt="about" style="width: 80%">
                     </div> <!-- about image -->
                 </div>
             </div> <!-- row -->

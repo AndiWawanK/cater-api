@@ -30,7 +30,7 @@
                             </li>
                         </ul>
                     </div> <!-- navbar collapse -->
-
+                    
                     <div class="navbar-btn d-none d-sm-inline-block">
                         <a class="main-btn" href="{{ url('/registration-merchant') }}">Daftar Gratis</a>
                     </div>

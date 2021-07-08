@@ -30,8 +30,37 @@
             <div class="service-wrapper mt-50 pt-20 pb-20 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.6s; animation-name: fadeInUp;">
                 <div class="row no-gutters justify-content-center">
                     <div class="col-lg-12 col-md-8">
-                        <div class="">
+                        <div class="row pl-20 pr-20">
                             <div class="col-md-6">
+                                <h6 class="sub-title pb-15"><span style="color: red">*</span> Informasi akun</h6>
+                                <div class="registration-form mb-20">
+                                    <label>Nama Lengkap (Nama pemilik usaha)</label>
+                                    <input type="text" name="name">
+                                </div>
+                                <div class="registration-form mb-20">
+                                    <label>No Telepon/WA</label>
+                                    <input type="text" name="name">
+                                </div>
+                                <div class="registration-form mb-20">
+                                    <label>Foto</label>
+                                    <input type="file" name="name">
+                                    <p>Ukuran max: 1MB</p>
+                                </div>
+                                <div class="registration-form mb-20">
+                                    <label>Alamat Lengkap</label>
+                                    <textarea name="address1" id="" cols="10" rows="5"></textarea>
+                                </div>
+                                <div class="registration-form mb-20">
+                                    <label>Email</label>
+                                    <input type="text" name="email">
+                                </div>
+                                <div class="registration-form mb-20">
+                                    <label>Password</label>
+                                    <input type="text" name="email">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="sub-title pb-15"><span style="color: red">*</span> Informasi usaha</h6>
                                 <div class="registration-form mb-20">
                                     <label>Nama Catering (Merk/Brand)</label>
                                     <input type="text" name="name">
@@ -39,8 +68,24 @@
                                 </div>
                                 <div class="registration-form mb-20">
                                     <label>Lokasi Outlet</label>
-                                    <input type="text" name="name">
+                                    <select>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                      </select>
                                     <p>Isikan dengan lokasi outlet anda</p>
+                                </div>
+                                <div class="registration-form mb-20">
+                                    <label>Banner usaha</label>
+                                    <input type="file" name="name">
+                                    <p>Ukuran max: 1MB</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="d-flex justify-content-end">
+                                    <button class="second-btn">Daftar</button>
                                 </div>
                             </div>
                         </div>

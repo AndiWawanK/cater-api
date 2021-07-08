@@ -8,6 +8,7 @@ use DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\OrderSummary;
 
 class OrderController extends Controller
 {
@@ -35,6 +36,11 @@ class OrderController extends Controller
                 'order_fee' => 2000,
                 'total_price' => $request->input('total_price'),
                 'status' => 'placed', // placed -> accepted -> on progress -> done
+                'latitude' => $request->input('lat'),
+                'longitude' => $request->input('long'),
+                'address' => $request->input('address'),
+                'portion' => $request->input('portion'),
+                'subscription' => $request->input('subscription'),
                 'start_at' => $request->input('start_at'),
                 'ends_at' => $request->input('ends_at')
             ]);

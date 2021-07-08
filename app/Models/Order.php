@@ -19,6 +19,11 @@ class Order extends Model
         'order_fee',
         'total_price',
         'status',
+        'latitude',
+        'longitude',
+        'address',
+        'portion',
+        'subscription',
         'ends_at',
     ];
 
@@ -28,6 +33,10 @@ class Order extends Model
 
     public function packet(){
         return $this->belongsTo(Packet::class, 'product_id');
+    }
+    
+    public function customer(){
+        return $this->hasMany(User::class, 'customer_id');
     }
     // public function packet(){}
 }

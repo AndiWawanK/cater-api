@@ -35,7 +35,7 @@ class OrderController extends Controller
                 'note' => $request->input('note'),
                 'order_fee' => 2000,
                 'total_price' => $request->input('total_price'),
-                'status' => 'placed', // placed -> accepted -> on progress -> done
+                'status' => 'placed', // placed -> accepted -> done
                 'latitude' => $request->input('lat'),
                 'longitude' => $request->input('long'),
                 'address' => $request->input('address'),

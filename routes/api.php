@@ -40,3 +40,14 @@ Route::group([
     Route::get('/order/progress/{customerId}', 'OrderController@orderProgress');
     Route::get('/order/history/{customerId}', 'OrderController@orderHistory');
 });
+
+// merchant
+Route::group([
+    'middleware' => 'auth:sanctum',
+    'namespace' => 'App\Http\Controllers\API\Merchant',
+    'prefix' => 'merchant'
+], function(){
+    Route::get('incoming-order', 'OrderController@getIncomingOrder');
+    Route::get('inprogress-order', 'OrderController@getOrderInProgress');
+    Route::get('accept-order/{orderId}', 'OrderController@acceptIncomingOrder');
+});

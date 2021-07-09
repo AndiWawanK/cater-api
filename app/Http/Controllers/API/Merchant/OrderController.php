@@ -65,7 +65,7 @@ class OrderController extends Controller
         }
 
         if($file = $request->file('banner')){
-            $path = $file->store('public/merchants/'.$folderName.'/');
+            $path = $file->store('public/merchants/'.$folderName);
             $name = $file->getClientOriginalName();
             
             $save = new Packet();
@@ -74,7 +74,7 @@ class OrderController extends Controller
             $save->price = $request->input('packet_price');
             $save->discount = $request->input('discount');
             $save->description = $request->input('description');
-            $save->thumbnail= $path;
+            $save->thumbnail= Storage::url($path);
             $save->save();
 
             return response()->json(['message' => true], 201);
@@ -98,7 +98,7 @@ class OrderController extends Controller
         }
 
         if($file = $request->file('image')){
-            $path = $file->store('public/merchants/'.$folderName.'/menu/');
+            $path = $file->store('public/merchants/'.$folderName.'/menu');
             $name = $file->getClientOriginalName();
 
             DB::beginTransaction();
@@ -106,7 +106,7 @@ class OrderController extends Controller
                 $create = PacketMenu::create([
                     'product_id' => $request->input('packet_id'),
                     'food_name' => $request->input('menu_name'),
-                    'image' => $path,
+                    'image' => Storage::url($path),
                     'description' => $request->input('description')
                 ]);
                 DB::commit();

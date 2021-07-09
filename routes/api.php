@@ -30,6 +30,7 @@ Route::group([
     'prefix' => 'customer'
 ], function(){
     Route::get('/profile', 'ProfileController@show');
+    Route::get('/update-profile', 'ProfileController@updateProfile');
     Route::get('/banner', 'PacketController@banner');
     Route::get('/categories', 'CategoryController@show');
     Route::get('/recomendation', 'RestaurantController@showRecomendation');
@@ -52,4 +53,8 @@ Route::group([
     Route::get('/accept-order/{orderId}', 'OrderController@acceptIncomingOrder');
     Route::post('/create-packet', 'OrderController@createPacket');
     Route::post('/create-packet-menu', 'OrderController@createPacketMenu');
+    // profile merchant
+    Route::post('/update-profile', 'ProfileController@updateProfile');
+    Route::get('/profile', 'ProfileController@showProfile');
+    Route::get('/profile-restaurant', 'ProfileController@showMerchantProfile');
 });

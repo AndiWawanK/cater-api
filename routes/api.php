@@ -47,7 +47,9 @@ Route::group([
     'namespace' => 'App\Http\Controllers\API\Merchant',
     'prefix' => 'merchant'
 ], function(){
-    Route::get('incoming-order', 'OrderController@getIncomingOrder');
-    Route::get('inprogress-order', 'OrderController@getOrderInProgress');
-    Route::get('accept-order/{orderId}', 'OrderController@acceptIncomingOrder');
+    Route::get('/incoming-order', 'OrderController@getIncomingOrder');
+    Route::get('/inprogress-order', 'OrderController@getOrderInProgress');
+    Route::get('/accept-order/{orderId}', 'OrderController@acceptIncomingOrder');
+    Route::post('/create-packet', 'OrderController@createPacket');
+    Route::post('/create-packet-menu', 'OrderController@createPacketMenu');
 });

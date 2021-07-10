@@ -55,9 +55,13 @@ class OrderController extends Controller
     }
 
     public function orderProgress(Request $request){
-        $progress = Order::with(['merchant', 'packet', 'packet.menu'])
+        $progress = Order::with(['merchant', 'merchant.user_detail', 'packet', 'packet.menu'])
                     ->where('customer_id', $request->customerId)
                     ->get();
+        foreach($progress as $key => $item){
+            $progress[$key]->merchant->phone = $progress[$key]->merchant->user_detail->phone;
+            unset($progress[$key]->merchant->user_detail);
+        }
         return response()->json($progress);
     }
 

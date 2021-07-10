@@ -22,7 +22,7 @@ class Packet extends Model
         'status',
         'package_type'
     ];
-
+    
     public function merchant_detail(){
         return $this->belongsTo(Merchant::class, 'merchant_id');
     }

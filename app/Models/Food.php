@@ -12,6 +12,8 @@ class Food extends Model
     
     protected $fillable = [
         'product_id',
+        'day_id',
+        'eating_time_id',
         'food_name',
         'image',
         'description'
@@ -19,5 +21,13 @@ class Food extends Model
 
     public function packet(){
         return $this->belongsTo(Packet::class, 'product_id');
+    }
+
+    public function days(){
+        return $this->belongsTo(Days::class, 'day_id');
+    }
+
+    public function eat_time(){
+        return $this->belongsTo(EatTime::class, 'eating_time_id');
     }
 }

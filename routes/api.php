@@ -35,7 +35,7 @@ Route::group([
     Route::get('/categories', 'CategoryController@show');
     Route::get('/recomendation', 'RestaurantController@showRecomendation');
     Route::get('/recomendation/{packetId}', 'RestaurantController@showPacketMenu');
-    
+    Route::get('/discount', 'PacketController@getPacketDiscount');
     // order
     Route::post('/order/{customerId}', 'OrderController@createOrder');
     Route::get('/order/progress/{customerId}', 'OrderController@orderProgress');

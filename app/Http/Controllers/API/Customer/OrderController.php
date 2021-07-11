@@ -57,6 +57,8 @@ class OrderController extends Controller
     public function orderProgress(Request $request){
         $progress = Order::with(['merchant', 'merchant.user_detail', 'packet', 'packet.menu'])
                     ->where('customer_id', $request->customerId)
+                    ->where('status', 'placed')
+                    ->orderBy('id', 'desc')
                     ->get();
         foreach($progress as $key => $item){
             $progress[$key]->merchant->phone = $progress[$key]->merchant->user_detail->phone;
@@ -69,6 +71,7 @@ class OrderController extends Controller
         $history = Order::with(['merchant', 'packet', 'packet.menu'])
                     ->where('customer_id', $request->customerId)
                     ->where('status', 'done')
+                    ->orderBy('id', 'desc')
                     ->get();
         return response()->json($history);
     }

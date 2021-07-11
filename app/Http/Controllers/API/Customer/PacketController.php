@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Banner;
 use App\Models\Packet;
+use App\Models\Merchant;
 
 class PacketController extends Controller
 {
@@ -20,5 +21,15 @@ class PacketController extends Controller
     //     return response()->json($banner, 200);
     // }
 
- 
+    public function getPacketDiscount(Request $request){
+        // $discount = Packet::with('merchant_detail')->where('discount', '!=', 0)->get();
+        $discount = Merchant::with(['packet' => function($query){
+            $query->where([
+                ['status', '=', 1],
+                ['discount', '!=', 0]
+            ]);
+            // $query->where('discount', '!=' 0);
+        }])->where('status', 1)->get();
+        return response()->json($discount);
+    }
 }

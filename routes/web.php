@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\admin\RegistrantController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,8 +25,11 @@ Route::group([
     Route::get('/', function(){
         return view('admin.pages.home');
     });
-
-    Route::get('/registrant', 'RegistrantController@show');
+    Route::get('/registrant', [RegistrantController::class, 'show']);
+    Route::get('/merchant-registered', [RegistrantController::class, 'registered']);
+    Route::get('/customer', [RegistrantController::class, 'customer']);
+    Route::get('/verification/{merchantId}', [RegistrantController::class, 'verificationRegistrant']);
+    Route::get('/disable/{merchantId}', [RegistrantController::class, 'disableAccountRegistrant']);
 
 });
 

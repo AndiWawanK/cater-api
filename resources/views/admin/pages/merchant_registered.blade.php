@@ -11,12 +11,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Merchant Registrant</h4>
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Merchant</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
-                                    <li class="breadcrumb-item text-muted active" aria-current="page">Registrant</li>
+                                    <li class="breadcrumb-item text-muted active" aria-current="page">Registered</li>
                                 </ol>
                             </nav>
                         </div>
@@ -28,7 +28,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Merchant Data Manajemen</h4>
+                                <h4 class="card-title">Merchant Terdaftar</h4>
                                 <div class="table-responsive">
                                     <table id="tableRegistrant" class="data-table mdl-data-table dataTable"
                                         cellspacing="0" width="100%" role="grid" style="width: 100%;">
@@ -55,7 +55,7 @@
                                                         <td style="color: green">Terverfikasi</td>
                                                     @endif
                                                     <td>
-                                                        <a href="{{url('dashboard/verification/'.$item->id)}}" class="btn btn-primary btn-sm btn-block">Verifikasi</a>
+                                                        <a href="{{url('dashboard/disable/'.$item->id)}}" class="btn btn-danger btn-sm btn-block">Nonaktifkan</a>
                                                         {{-- @if ($item->status == 0)
                                                             
                                                         @else

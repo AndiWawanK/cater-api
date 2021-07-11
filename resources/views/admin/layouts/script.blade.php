@@ -1,6 +1,7 @@
-<script src="{{ asset('assets/assets/libs/jquery/dist/jquery.min.js') }}"></script>
-<script src="{{ asset('assets/assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
+{{-- <script src="{{ asset('assets/assets/libs/jquery/dist/jquery.min.js') }}"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="{{ asset('assets/assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
 <!-- apps -->
 <!-- apps -->
 <script src="{{ asset('assets/dist/js/app-style-switcher.js') }}"></script>

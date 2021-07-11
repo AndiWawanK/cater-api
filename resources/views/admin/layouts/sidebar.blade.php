@@ -11,7 +11,7 @@
                 <li class="nav-small-cap"><span class="hide-menu">Manajements</span></li>
 
                 <li class="sidebar-item"> 
-                    <a class="sidebar-link" href="ticket-list.html" aria-expanded="false">
+                    <a class="sidebar-link" href="/dashboard/customer" aria-expanded="false">
                         <i data-feather="user" class="feather-icon"></i>
                         <span class="hide-menu">Customer</span>
                     </a>
@@ -29,7 +29,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="form-inputs.html" class="sidebar-link">
+                            <a href="/dashboard/merchant-registered" class="sidebar-link">
                                 <span class="hide-menu"> Registered</span>
                             </a>
                         </li>

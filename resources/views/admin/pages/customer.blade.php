@@ -37,31 +37,16 @@
                                                 <th>ID</th>
                                                 <th>Nama Lengkap</th>
                                                 <th>No.Telp</th>
-                                                <th>Nama Usaha</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <th>Email</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($data as $key => $item)
                                                 <tr>
                                                     <td>{{ $key + 1 }}</td>
-                                                    <td>{{ $item->user_detail->full_name }}</td>
-                                                    <td>{{ $item->user_detail->phone }}</td>
-                                                    <td>{{ $item->merchant_name }}</td>
-                                                    @if ($item->status == 0)
-                                                        <td style="color: tomato">Belum Diverifikasi</td>
-                                                    @else
-                                                        <td style="color: green">Terverfikasi</td>
-                                                    @endif
-                                                    <td>
-                                                        <a href="{{url('dashboard/verification/'.$item->id)}}" class="btn btn-primary btn-sm btn-block">Verifikasi</a>
-                                                        {{-- @if ($item->status == 0)
-                                                            
-                                                        @else
-                                                            <a href="{{url('dashboard/disable/'.$item->id)}}" class="btn btn-danger btn-sm btn-block">Nonaktifkan</a>
-                                                        @endif --}}
-                                                    </td>
+                                                    <td>{{ $item->full_name }}</td>
+                                                    <td>{{ $item->phone }}</td>
+                                                    <td>{{ $item->email }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

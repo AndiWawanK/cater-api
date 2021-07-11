@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\RegistrantController;
+use App\Http\Controllers\frontend\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +42,5 @@ Route::get('/', function(){
 Route::get('/contact', function(){
     return view('frontend.pages.contact');
 });
-Route::get('/registration-merchant', function(){
-    return view('frontend.pages.registration');
-});
+Route::get('/registration-merchant', [RegisterController::class, 'index'])->name('registration.merchant');
+Route::POST('/register', [RegisterController::class, 'handleRegister']);

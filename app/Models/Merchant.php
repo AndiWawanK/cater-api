@@ -17,7 +17,9 @@ class Merchant extends Model
         'merchant_level',
         'banner',
         'province_code',
-        'status'
+        'status',
+        'rating',
+        'description'
     ];
 
     public function user_detail(){

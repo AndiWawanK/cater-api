@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="registration-form mb-20">
                                         <label>Password</label>
-                                        <input type="text" name="password">
+                                        <input type="password" name="password">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

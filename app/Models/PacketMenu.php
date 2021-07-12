@@ -12,6 +12,8 @@ class PacketMenu extends Model
     
     protected $fillable = [
         'product_id',
+        'day_id',
+        'eating_time_id',
         'food_name',
         'image',
         'description'

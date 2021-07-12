@@ -12,6 +12,8 @@ use App\Models\Order;
 use App\Models\Merchant;
 use App\Models\Packet;
 use App\Models\PacketMenu;
+use App\Models\Days;
+use App\Models\Food;
 
 class OrderController extends Controller
 {
@@ -81,6 +83,14 @@ class OrderController extends Controller
         }
     }
     
+    public function showMyPacket(Request $request){
+        $userId = $request->user()->id;
+        $merchant = Merchant::where('user_id', $userId)->firstOrFail();
+
+        $packets = Packet::where('merchant_id', $merchant->id)->get();
+        return response()->json($packets);
+    }
+
     public function createPacketMenu(Request $request){
         $userId = $request->user()->id;
         $merchant = Merchant::where('user_id', $userId)->firstOrFail();
@@ -88,6 +98,8 @@ class OrderController extends Controller
 
         $dataValidator = Validator::make($request->all(), [
             'packet_id' => 'required',
+            'day_id' => 'required',
+            'eating_time_id' => 'required',
             'menu_name' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:5048',
             'description' => 'required',
@@ -105,7 +117,9 @@ class OrderController extends Controller
             try{
                 $create = PacketMenu::create([
                     'product_id' => $request->input('packet_id'),
-                    'food_name' => $request->input('menu_name'),
+                    'day_id' => $request->input('day_id'),
+                    'eating_time_id' => $request->input('eating_time_id'),
+                    'food_name' => $request->input('food_name'),
                     'image' => Storage::url($path),
                     'description' => $request->input('description')
                 ]);
@@ -117,5 +131,25 @@ class OrderController extends Controller
             }
         }
 
+    }
+    
+    public function getPacketMenu(Request $request){
+        $packets = Food::with(['days','eat_time'])->where('product_id', $request->packetId)->get();
+        $days = Days::get();
+        $result = [];
+        foreach($days as $key => $day){
+            $result[$key]['day'] = $day->name;
+            $result[$key]['menu'] = [];
+            foreach($packets as $idx => $packet){
+                $packets[$idx]->eating_time = $packet->eat_time->time;
+                $packets[$idx]->day = $packet->days->name;
+                unset($packets[$idx]->eat_time);
+                unset($packets[$idx]->days);
+                if($packet->day_id === $day->id){
+                    array_push($result[$key]['menu'], $packet);
+                }
+            }
+        }
+        return response()->json($result);
     }
 }

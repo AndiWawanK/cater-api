@@ -53,6 +53,8 @@ Route::group([
     Route::get('/accept-order/{orderId}', 'OrderController@acceptIncomingOrder');
     Route::post('/create-packet', 'OrderController@createPacket');
     Route::post('/create-packet-menu', 'OrderController@createPacketMenu');
+    Route::get('/packets', 'OrderController@showMyPacket');
+    Route::get('/packet-menu/{packetId}', 'OrderController@getPacketMenu');
     // profile merchant
     Route::post('/update-profile', 'ProfileController@updateProfile');
     Route::get('/profile', 'ProfileController@showProfile');

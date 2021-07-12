@@ -152,4 +152,28 @@ class OrderController extends Controller
         }
         return response()->json($result);
     }
+    public function enablePacket(Request $request){
+        DB::beginTransaction();
+        try{
+            $update = Packet::where('id', $request->packetId)
+                            ->update(['status' => 1]);
+            DB::commit();
+            return response()->json(["message" => 'Enjoy']);
+        }catch(Exception $e){
+            DB::rollback();
+            return response()->json(['error' => $e], 400);
+        }
+    }
+    public function disablePacket(Request $request){
+        DB::beginTransaction();
+        try{
+            $update = Packet::where('id', $request->packetId)
+                            ->update(['status' => 0]);
+            DB::commit();
+            return response()->json(["message" => 'Aishh']);
+        }catch(Exception $e){
+            DB::rollback();
+            return response()->json(['error' => $e], 400);
+        }
+    }
 }

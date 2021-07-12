@@ -55,6 +55,8 @@ Route::group([
     Route::post('/create-packet-menu', 'OrderController@createPacketMenu');
     Route::get('/packets', 'OrderController@showMyPacket');
     Route::get('/packet-menu/{packetId}', 'OrderController@getPacketMenu');
+    Route::get('/enable-packet/{packetId}', 'OrderController@enablePacket');
+    Route::get('/disable-packet/{packetId}', 'OrderController@disablePacket');
     // profile merchant
     Route::post('/update-profile', 'ProfileController@updateProfile');
     Route::get('/profile', 'ProfileController@showProfile');

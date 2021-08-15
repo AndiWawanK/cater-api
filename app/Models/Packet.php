@@ -17,7 +17,8 @@ class Packet extends Model
         'name',
         'subscription',
         'price',
-        'discount',
+	'discount',
+	'thumbnail',
         'description',
         'status',
         'package_type'

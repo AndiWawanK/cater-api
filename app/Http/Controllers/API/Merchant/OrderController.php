@@ -82,6 +82,41 @@ class OrderController extends Controller
             return response()->json(['message' => true], 201);
         }
     }
+
+    public function updatePacket(Request $request){
+        $folderName = str_replace(' ', '', strtolower($request->merchant_name));
+	DB::beginTransaction();
+	try {
+	    $packet = Packet::where('id', $request->packetId)->firstOrFail();
+	    if($request->hasFile('banner')){
+		$file = $request->file('banner');
+		$path = $file->store('public/merchants/'.$folderName);
+		$name = $file->getClientOriginalName();
+		$packet->update([
+		    'thumbnail' => Storage::url($path)
+	    	]);
+	    }
+
+	    $packet->update([
+	    	'name'      	=> $request->input('packet_name'),
+	    	'price'     	=> $request->input('packet_price'),
+		'discount'  	=> $request->input('discount'),
+		'description'	=> $request->input('description')
+	   ]);
+	   DB::commit();
+
+	   return response()->json([
+	       'data' => $packet,
+               'message' => 'success',
+	   ]);
+	    
+	
+	}catch(Exception $e){
+	    DB::rollback();
+            return response()->json(['error' => $e], 400);
+	}
+    
+    }
     
     public function showMyPacket(Request $request){
         $userId = $request->user()->id;
@@ -152,6 +187,7 @@ class OrderController extends Controller
         }
         return response()->json($result);
     }
+
     public function enablePacket(Request $request){
         DB::beginTransaction();
         try{
@@ -164,6 +200,7 @@ class OrderController extends Controller
             return response()->json(['error' => $e], 400);
         }
     }
+
     public function disablePacket(Request $request){
         DB::beginTransaction();
         try{

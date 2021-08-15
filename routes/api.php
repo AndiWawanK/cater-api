@@ -54,6 +54,7 @@ Route::group([
     Route::post('/create-packet', 'OrderController@createPacket');
     Route::post('/create-packet-menu', 'OrderController@createPacketMenu');
     Route::get('/packets', 'OrderController@showMyPacket');
+    Route::post('/packets/{packetId}', 'OrderController@updatePacket');
     Route::get('/packet-menu/{packetId}', 'OrderController@getPacketMenu');
     Route::get('/enable-packet/{packetId}', 'OrderController@enablePacket');
     Route::get('/disable-packet/{packetId}', 'OrderController@disablePacket');
